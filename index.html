@@ -208,6 +208,11 @@ footer{background:var(--deep);border-top:1px solid rgba(237,236,233,.06);padding
   .footer-inner{flex-direction:column;gap:1rem;text-align:center}
   .hero-content{padding:8rem 1.5rem 4rem}
 }
+.mobile-nav{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:#1a3146;z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:1.2rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#fff;text-decoration:none}
+.mobile-nav .nav-cta{background:#fff;color:#1a3146;padding:.7rem 2rem;font-size:.85rem}
+.mobile-nav .close-btn{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer}
 </style>
 </head>
 <body>
@@ -225,12 +230,19 @@ footer{background:var(--deep);border-top:1px solid rgba(237,236,233,.06);padding
       <a href="#proces">Proces</a>
       <a href="#kontakt" class="nav-cta">Kontakt</a>
     </nav>
-    <button class="hamburger" onclick="this.classList.toggle('active')" aria-label="Menu">
+    <button class="hamburger" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
-
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" onclick="document.getElementById('mobileNav').classList.remove('open')">✕</button>
+  <a href="#o-nama" onclick="document.getElementById('mobileNav').classList.remove('open')">O nama</a>
+  <a href="#usluge" onclick="document.getElementById('mobileNav').classList.remove('open')">Usluge</a>
+  <a href="#galerija" onclick="document.getElementById('mobileNav').classList.remove('open')">Galerija</a>
+  <a href="#proces" onclick="document.getElementById('mobileNav').classList.remove('open')">Proces</a>
+  <a href="#kontakt" class="nav-cta" onclick="document.getElementById('mobileNav').classList.remove('open')">Kontakt</a>
+</div>
 <!-- HERO with background image + overlay -->
 <section class="hero">
   <!-- Background: replace placeholder with your hero image -->
@@ -439,7 +451,7 @@ footer{background:var(--deep);border-top:1px solid rgba(237,236,233,.06);padding
   <h2 class="section-title reveal">Spremni za transformaciju<br>vašeg prostora?</h2>
   <p class="section-subtitle reveal">Kontaktirajte nas za besplatnu procjenu i ponudu. Vaš prostor zaslužuje stručan pristup.</p>
   <div class="cta-actions reveal reveal-delay-1">
-    <a href="tel:+385123456789" class="btn-primary">
+    <a href="tel:+385923060943" class="btn-primary">
       Nazovite nas
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
     </a>
