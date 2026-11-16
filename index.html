@@ -105,14 +105,44 @@ section{padding:7rem 0}
 .services .section-tag{color:var(--steel)}
 .services .section-title{color:var(--cream)}
 .services .section-subtitle{color:rgba(237,236,233,.5)}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:4rem;background:rgba(237,236,233,.06)}
-.service-card{background:var(--deep);padding:3rem 2.5rem;transition:all .4s;position:relative;overflow:hidden}
-.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--cream);transform:scaleX(0);transform-origin:left;transition:transform .5s}
-.service-card:hover::before{transform:scaleX(1)}
-.service-card:hover{background:rgba(237,236,233,.04)}
-.service-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(237,236,233,.08);line-height:1;margin-bottom:1.5rem}
-.service-card h3{font-size:1.1rem;font-weight:600;letter-spacing:.04em;margin-bottom:1rem;color:var(--cream)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:4rem}
+.service-card{background:#203a52;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .4s,box-shadow .4s}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.service-img{position:relative;height:210px;overflow:hidden}
+.service-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.service-card:hover .service-img img{transform:scale(1.06)}
+.service-num{position:absolute;top:1.25rem;left:1.25rem;z-index:2;background:var(--deep);color:var(--cream);font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;padding:.35rem .75rem;line-height:1}
+.service-body{padding:2rem 2rem 2.25rem;position:relative;flex:1}
+.service-body::before{content:'';position:absolute;top:0;left:2rem;width:2.5rem;height:2px;background:var(--cream);transition:width .5s}
+.service-card:hover .service-body::before{width:calc(100% - 4rem)}
+.service-card h3{font-size:1.1rem;font-weight:600;letter-spacing:.04em;margin-bottom:.8rem;color:var(--cream)}
 .service-card p{font-size:.88rem;font-weight:300;line-height:1.7;color:var(--steel)}
+/* Featured — iskopi i rušenje bagerom */
+.service-card.featured{grid-column:1/-1;display:grid;grid-template-columns:1.35fr 1fr}
+.featured .service-img{height:auto;min-height:420px}
+.featured .service-img img{position:absolute;inset:0;object-position:88% center}
+.featured .service-img img.service-inset{inset:auto auto 1.5rem 1.5rem;width:42%;height:auto;aspect-ratio:16/10;object-position:80% center;border:3px solid var(--cream);box-shadow:0 12px 30px rgba(0,0,0,.35);z-index:2}
+.featured:hover .service-img img.service-inset{transform:none}
+.featured .service-body{padding:3.25rem 3rem;display:flex;flex-direction:column;justify-content:center}
+.featured .service-body::before{left:3rem}
+.featured:hover .service-body::before{width:calc(100% - 6rem)}
+.service-kicker{font-size:.65rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--steel);margin-bottom:.9rem}
+.featured h3{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;letter-spacing:0;line-height:1.1;margin-bottom:1.1rem}
+.featured p{font-size:.95rem;color:rgba(237,236,233,.65)}
+.service-tags{list-style:none;margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.service-tags li{font-size:.7rem;font-weight:500;letter-spacing:.06em;color:var(--cream);border:1px solid rgba(237,236,233,.2);padding:.4rem .8rem}
+.service-link{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none;align-self:flex-start;border-bottom:1px solid rgba(237,236,233,.35);padding-bottom:.35rem;transition:gap .3s,border-color .3s}
+.service-link:hover{gap:1rem;border-color:var(--cream)}
+.service-link svg{width:16px;height:16px}
+/* Light card — konzultacije */
+.service-card.light{background:var(--cream);justify-content:space-between}
+.service-card.light .service-body{padding:2.5rem 2rem}
+.service-card.light .service-body::before{background:var(--deep)}
+.service-card.light .service-num{position:static;display:inline-block;margin-bottom:1.75rem}
+.service-card.light h3{color:var(--deep);font-family:'Cormorant Garamond',serif;font-size:1.8rem;letter-spacing:0;line-height:1.15}
+.service-card.light p{color:var(--deep-60)}
+.service-card.light .service-link{color:var(--deep);border-color:var(--deep-20);margin:0 2rem 2.25rem}
+.service-card.light .service-link:hover{border-color:var(--deep)}
 
 /* ── GALLERY with real image support ── */
 .gallery{background:var(--cream)}
@@ -188,7 +218,11 @@ footer{background:var(--deep);border-top:1px solid rgba(237,236,233,.06);padding
   .hamburger{display:flex}
   .about-grid{grid-template-columns:1fr;gap:3rem}
   .about-image{height:350px}
-  .services-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr 1fr;grid-auto-flow:dense}
+  .service-card.featured{grid-template-columns:1fr}
+  .featured .service-img{min-height:360px}
+  .featured .service-body{padding:2.5rem 2rem}
+  .featured .service-body::before{left:2rem}
   .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:220px}
   .gallery-item.span-2{grid-column:span 1}
   .gallery-item.span-row{grid-row:span 1}
@@ -201,6 +235,10 @@ footer{background:var(--deep);border-top:1px solid rgba(237,236,233,.06);padding
   .showcase-strip{height:280px}
 }
 @media(max-width:580px){
+  .services-grid{grid-template-columns:1fr}
+  .featured .service-img{min-height:260px}
+  .featured .service-img img.service-inset{width:48%;inset:auto auto 1rem 1rem}
+  .featured h3{font-size:1.9rem}
   .gallery-grid{grid-template-columns:1fr;grid-auto-rows:200px}
   .process-steps{grid-template-columns:1fr}
   .stats-inner{grid-template-columns:1fr}
@@ -317,37 +355,66 @@ footer{background:var(--deep);border-top:1px solid rgba(237,236,233,.06);padding
   <div class="container">
     <span class="section-tag reveal">Usluge</span>
     <h2 class="section-title reveal">Kompletna priprema<br>vašeg prostora</h2>
-    <p class="section-subtitle reveal">Od rušenja pregradnih zidova do potpunog čišćenja — pokrivamo sve korake pripreme prostora za renovaciju.</p>
+    <p class="section-subtitle reveal">Od rušenja pregradnih zidova do iskopa bagerom i potpunog čišćenja — pokrivamo sve korake pripreme prostora i terena.</p>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-num">01</div>
-        <h3>Rušenje zidova i pregrada</h3>
-        <p>Stručno uklanjanje pregradnih zidova, parapeta i nepotrebnih konstrukcija uz pažnju na nosive elemente.</p>
+        <div class="service-img"><img src="usluga-zidovi.jpg" alt="Srušeni zid od opeke" loading="lazy"><span class="service-num">01</span></div>
+        <div class="service-body">
+          <h3>Rušenje zidova i pregrada</h3>
+          <p>Stručno uklanjanje pregradnih zidova, parapeta i nepotrebnih konstrukcija uz pažnju na nosive elemente.</p>
+        </div>
       </div>
       <div class="service-card reveal reveal-delay-1">
-        <div class="service-num">02</div>
-        <h3>Demontaža podova i obloga</h3>
-        <p>Uklanjanje starih podova, pločica, parketa, laminata te zidnih obloga i keramike.</p>
+        <div class="service-img"><img src="usluga-podovi.jpg" alt="Uklonjene pločice i obloge" loading="lazy"><span class="service-num">02</span></div>
+        <div class="service-body">
+          <h3>Demontaža podova i obloga</h3>
+          <p>Uklanjanje starih podova, pločica, parketa, laminata te zidnih obloga i keramike.</p>
+        </div>
       </div>
       <div class="service-card reveal reveal-delay-2">
-        <div class="service-num">03</div>
-        <h3>Uklanjanje instalacija</h3>
-        <p>Demontaža starih vodovodnih, električnih i sanitarnih instalacija prema planu renovacije.</p>
+        <div class="service-img"><img src="usluga-instalacije.jpg" alt="Demontiran spušteni strop i instalacije" loading="lazy"><span class="service-num">03</span></div>
+        <div class="service-body">
+          <h3>Uklanjanje instalacija</h3>
+          <p>Demontaža starih vodovodnih, električnih i sanitarnih instalacija prema planu renovacije.</p>
+        </div>
       </div>
-      <div class="service-card reveal reveal-delay-3">
-        <div class="service-num">04</div>
-        <h3>Odvoz šute i otpada</h3>
-        <p>Kompletno zbrinjavanje građevinskog otpada i šute uz ekološki odgovoran pristup.</p>
-      </div>
-      <div class="service-card reveal reveal-delay-4">
-        <div class="service-num">05</div>
-        <h3>Čišćenje prostora</h3>
-        <p>Temeljito čišćenje nakon rušenja — prostor predajemo spreman za građevinske radove.</p>
+      <div class="service-card featured reveal" id="iskopi">
+        <div class="service-img">
+          <img src="iskop-bagerom.jpg" alt="Bager kopa zemlju na gradilištu" loading="lazy">
+          <img src="rusenje-bagerom.jpg" alt="Bager s hidrauličnim čekićem ruši betonsku konstrukciju" class="service-inset" loading="lazy">
+          <span class="service-num">04</span>
+        </div>
+        <div class="service-body">
+          <span class="service-kicker">Strojni radovi</span>
+          <h3>Iskopi i rušenje bagerom</h3>
+          <p>Za veće zahvate dolazimo s bagerom. Radimo iskope za temelje, podrume i priključke te pripremamo teren za gradnju. Betonske zidove, temelje, ploče i manje objekte ruši bager s hidrauličnim čekićem, što je brže i sigurnije od ručnog rada. Na kraju odvozimo materijal i ostavljamo čist teren.</p>
+          <ul class="service-tags">
+            <li>Temelji i podrumi</li><li>Kanali za instalacije</li><li>Ravnanje terena</li><li>Betonske konstrukcije</li><li>Odvoz materijala</li>
+          </ul>
+          <a href="#kontakt" class="service-link">Zatražite ponudu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
       </div>
       <div class="service-card reveal">
-        <div class="service-num">06</div>
-        <h3>Konzultacije i procjene</h3>
-        <p>Besplatan dolazak na lokaciju, stručna procjena radova i izrada detaljne ponude.</p>
+        <div class="service-img"><img src="usluga-sut.jpg" alt="Građevinski otpad nakon rušenja" loading="lazy"><span class="service-num">05</span></div>
+        <div class="service-body">
+          <h3>Odvoz šute i otpada</h3>
+          <p>Kompletno zbrinjavanje građevinskog otpada i šute uz ekološki odgovoran pristup.</p>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-img"><img src="usluga-ciscenje.jpg" alt="Očišćen prostor spreman za radove" loading="lazy"><span class="service-num">06</span></div>
+        <div class="service-body">
+          <h3>Čišćenje prostora</h3>
+          <p>Temeljito čišćenje nakon rušenja. Prostor predajemo spreman za građevinske radove.</p>
+        </div>
+      </div>
+      <div class="service-card light reveal reveal-delay-2">
+        <div class="service-body">
+          <span class="service-num">07</span>
+          <h3>Konzultacije i procjene</h3>
+          <p>Besplatan dolazak na lokaciju, stručna procjena radova i izrada detaljne ponude.</p>
+        </div>
+        <a href="#kontakt" class="service-link">Besplatna procjena <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </div>
